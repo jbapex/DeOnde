@@ -1,0 +1,302 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+      }
+
+      .dark {
+        --background: 222.2 84% 4.9%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222.2 47.4% 11.2%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+      }
+    }
+
+    @layer base {
+      * {
+        @apply border-border;
+      }
+      html {
+        font-size: 80%;
+      }
+      html, body {
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow: hidden;
+      }
+      
+      body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', sans-serif;
+      }
+    }
+
+    /* Custom scrollbar for webkit browsers */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgba(156, 163, 175, 0.5);
+      border-radius: 10px;
+      border: 2px solid transparent;
+      background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(156, 163, 175, 0.7);
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background-color: rgba(107, 114, 128, 0.5);
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background-color: rgba(107, 114, 128, 0.7);
+    }
+
+    .bg-green-glow {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 255, 136, 0.15), rgba(0,0,0,0));
+    }
+
+    /* Previne zoom automático no mobile ao focar em inputs */
+    @media screen and (max-width: 768px) {
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="tel"],
+      input[type="search"],
+      input[type="url"],
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+    }
+
+    /* Estilos customizados para formatação de markdown no chat */
+    .prose {
+      @apply text-gray-800 dark:text-gray-200;
+    }
+
+    .prose p {
+      @apply mb-4 leading-relaxed;
+      margin-top: 0;
+    }
+
+    .prose p:last-child {
+      @apply mb-0;
+    }
+
+    .prose ul,
+    .prose ol {
+      @apply mb-4 pl-6 space-y-2;
+      margin-top: 0;
+    }
+
+    .prose ul {
+      @apply list-disc;
+    }
+
+    .prose ol {
+      @apply list-decimal;
+    }
+
+    .prose li {
+      @apply mb-1 leading-relaxed;
+    }
+
+    .prose li p {
+      @apply mb-2;
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3,
+    .prose h4,
+    .prose h5,
+    .prose h6 {
+      @apply font-semibold mb-3 mt-6;
+      margin-top: 1.5rem;
+    }
+
+    .prose h1:first-child,
+    .prose h2:first-child,
+    .prose h3:first-child,
+    .prose h4:first-child,
+    .prose h5:first-child,
+    .prose h6:first-child {
+      @apply mt-0;
+    }
+
+    .prose h1 {
+      @apply text-2xl;
+    }
+
+    .prose h2 {
+      @apply text-xl;
+    }
+
+    .prose h3 {
+      @apply text-lg;
+    }
+
+    .prose strong {
+      @apply font-semibold;
+    }
+
+    .prose em {
+      @apply italic;
+    }
+
+    .prose code {
+      @apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+    }
+
+    .prose pre {
+      @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg mb-4 overflow-x-auto;
+      margin-top: 0;
+    }
+
+    .prose pre code {
+      @apply bg-transparent p-0;
+    }
+
+    .prose blockquote {
+      @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic my-4;
+    }
+
+    .prose a {
+      @apply text-primary underline;
+    }
+
+    .prose hr {
+      @apply border-gray-300 dark:border-gray-700 my-6;
+    }
+
+    .prose table {
+      @apply w-full mb-4 border-collapse;
+    }
+
+    .prose th,
+    .prose td {
+      @apply border border-gray-300 dark:border-gray-700 px-4 py-2;
+    }
+
+    .prose th {
+      @apply bg-gray-100 dark:bg-gray-800 font-semibold;
+    }
+
+    /* Estilos específicos para conteúdo de mensagens do chat */
+    .chat-message-content {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .chat-message-content p {
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+
+    .chat-message-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-message-content ul,
+    .chat-message-content ol {
+      margin-bottom: 1rem;
+      margin-top: 0;
+      padding-left: 1.5rem;
+    }
+
+    .chat-message-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .chat-message-content li:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-message-content h1,
+    .chat-message-content h2,
+    .chat-message-content h3,
+    .chat-message-content h4,
+    .chat-message-content h5,
+    .chat-message-content h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .chat-message-content h1:first-child,
+    .chat-message-content h2:first-child,
+    .chat-message-content h3:first-child,
+    .chat-message-content h4:first-child,
+    .chat-message-content h5:first-child,
+    .chat-message-content h6:first-child {
+      margin-top: 0;
+    }
+
+    .chat-message-content blockquote {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chat-message-content pre {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chat-message-content hr {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ApexIA / PublicClientChat: evita input cortado nas laterais no mobile */
+    @media (max-width: 640px) {
+      .safe-area-padding-footer {
+        padding-left: max(1.25rem, env(safe-area-inset-left, 0px)) !important;
+        padding-right: max(1.25rem, env(safe-area-inset-right, 0px)) !important;
+      }
+    }
