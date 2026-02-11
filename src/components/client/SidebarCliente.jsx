@@ -8,7 +8,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { motion } from 'framer-motion';
 import { TooltipCustom } from '@/components/ui/tooltip-custom';
 
-// Standalone app: rotas sob /crm apenas
 const isStandalone = () => typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname.startsWith('/crm'));
 
 const getRoutePrefix = (profile) => {

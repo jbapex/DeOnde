@@ -1,6 +1,8 @@
-# Planeje CRM (standalone)
+# DeOnde – CRM na versão do cliente
 
-CRM do cliente extraído do Planeje – leads, contatos, canais WhatsApp, automações, vendas.
+Aplicação standalone do **CRM na versão do cliente**: login de cliente, leads, contatos, canais WhatsApp, automações, vendas. Extraído do Planeje para rodar como sistema à parte com Supabase próprio.
+
+Repositório: [github.com/jbapex/DeOnde](https://github.com/jbapex/DeOnde)
 
 ## Pré-requisitos
 
