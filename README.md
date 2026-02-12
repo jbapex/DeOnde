@@ -1,8 +1,10 @@
 # DeOnde – CRM na versão do cliente
 
-Aplicação standalone do **CRM na versão do cliente**: login de cliente, leads, contatos, canais WhatsApp, automações, vendas. Extraído do Planeje para rodar como sistema à parte com Supabase próprio.
+Sistema **totalmente independente**: CRM na versão do cliente (login, leads, contatos, canais WhatsApp, automações, vendas). Não depende do Planeje nem de nenhum outro sistema.
 
-Repositório: [github.com/jbapex/DeOnde](https://github.com/jbapex/DeOnde)
+- **Banco e auth:** use um **projeto Supabase novo** (URL e anon key no `.env`).
+- **Dados:** só os dados desse projeto; nada é puxado de outro app.
+- Repositório: [github.com/jbapex/DeOnde](https://github.com/jbapex/DeOnde)
 
 ## Pré-requisitos
 
@@ -11,11 +13,11 @@ Repositório: [github.com/jbapex/DeOnde](https://github.com/jbapex/DeOnde)
 
 ## Setup
 
-1. Crie um novo projeto em [Supabase](https://supabase.com).
-2. Em SQL Editor, crie as tabelas base `clientes` e `profiles` (veja `supabase/migrations/README_MIGRATIONS.md` ou rode as migrations na ordem do nome).
-3. Copie `.env.example` para `.env` e preencha `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`.
+1. Crie um **novo** projeto em [Supabase](https://supabase.com) (só para o DeOnde; não use o projeto de outro sistema).
+2. Rode as migrations em `supabase/migrations/` na ordem do nome (SQL Editor ou CLI), para criar `clientes`, `profiles`, leads, etc.
+3. Copie `.env.example` para `.env` e preencha com a **URL e a anon key desse projeto** (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`). O app não usa nenhum outro backend.
 4. `npm install` e `npm run dev`.
-5. Deploy das Edge Functions: `supabase functions deploy uazapi-inbox-webhook`, `create-lead-from-contact`, `apicebot-inbox-webhook`.
+5. Faça deploy das Edge Functions **nesse** projeto: `supabase functions deploy uazapi-inbox-webhook`, `create-lead-from-contact`, `apicebot-inbox-webhook`.
 
 ## Migrations
 

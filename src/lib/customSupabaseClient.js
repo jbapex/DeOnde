@@ -1,6 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-export const supabaseUrl = 'https://slrpesefjkzoaufvogdj.supabase.co';
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNscnBlc2Vmamt6b2F1ZnZvZ2RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxOTk5NjAsImV4cCI6MjA3NDc3NTk2MH0._ZFfjr_DKP-0HNXFapth3gPhTSlce6FP2142aP_NhKo';
+// DeOnde é sistema independente: use SEMPRE um projeto Supabase próprio (variáveis de ambiente).
+export const supabaseUrl = import.meta.env.VITE_SUPABASE_URL ?? '';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY ?? '';
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  console.warn(
+    'DeOnde: configure VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY no .env (projeto Supabase novo). ' +
+    'Veja .env.example e README.'
+  );
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
