@@ -332,7 +332,7 @@ export const AuthProvider = ({ children }) => {
   }, [toast]);
 
   const signIn = useCallback(async (email, password) => {
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -343,10 +343,16 @@ export const AuthProvider = ({ children }) => {
         title: "Sign in Failed",
         description: error.message || "Something went wrong",
       });
+      return { error };
+    }
+
+    // Wait for the session to be established and profile to be fetched
+    if (data?.session) {
+      await handleSession(data.session, false);
     }
 
     return { error };
-  }, [toast]);
+  }, [toast, handleSession]);
 
   const signOut = useCallback(async () => {
     const { error } = await supabase.auth.signOut();
