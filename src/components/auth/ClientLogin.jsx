@@ -37,11 +37,9 @@ const ClientLogin = () => {
       return;
     }
     
-    // Redirecionar imediatamente para /crm/leads após login bem-sucedido
-    // Isso evita o delay do carregamento do perfil no context
-    console.log('✅ ClientLogin: Login bem-sucedido, redirecionando para /crm/leads');
-    navigate('/crm/leads', { replace: true });
-    setIsLoading(false);
+    // Don't navigate here - let the useEffect handle it after profile loads
+    console.log('✅ ClientLogin: Login bem-sucedido, aguardando carregamento do perfil');
+    // Keep loading state - useEffect will redirect when profile is ready
   };
 
   return (
